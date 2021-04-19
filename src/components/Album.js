@@ -69,15 +69,15 @@ export default function Album() {
 
   const [images, setImages] = useState(null);
 
-  console.log("Hint: https://futureboy.us/stegano/decinput.html");
-  console.log("Hint: https://en.wikipedia.org/wiki/Steganography");
-
   useEffect(() => {
+    console.log("Hint: https://futureboy.us/stegano/decinput.html");
+    console.log("Hint: https://en.wikipedia.org/wiki/Steganography");
+
     setInterval(() => {
       fetchImages().then((allImages) => {
         setImages(allImages);
       });
-    }, 2500);
+    }, 15000);
 
     async function fetchImages() {
       const randomIndexForCryptoImg = getRandomIntInclusive(
