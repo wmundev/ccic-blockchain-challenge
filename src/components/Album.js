@@ -16,7 +16,8 @@ import Link from "@material-ui/core/Link";
 import axios from "axios";
 import cryptoImg from "../images/crytocurrency-bitcoin-reduced-steg.jpg";
 import { getRandomIntInclusive } from "../services/Number";
-
+import { Snackbar, TextField } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -68,6 +69,9 @@ export default function Album() {
   const classes = useStyles();
 
   const [images, setImages] = useState(null);
+  const [answer, setAnswer] = useState("");
+  const [snackbarOpened, setSnackbarOpened] = useState(false);
+  const [failedMessageDisplay, setFailedMessageDisplay] = useState(false);
 
   useEffect(() => {
     console.log("Hint: https://futureboy.us/stegano/decinput.html");
@@ -100,6 +104,38 @@ export default function Album() {
     }
   }, []);
 
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    const ANSWER = "38iW1h8gCihwEtKrWUcGzV8RaCNFHsWFrJ";
+
+    if (answer === ANSWER) {
+      setSnackbarOpened(true);
+    } else {
+      setFailedMessageDisplay(true);
+    }
+  };
+
+  const answerChanged = (event) => {
+    setAnswer(event.target.value);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackbarOpened(false);
+  };
+
+  const onFailedSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setFailedMessageDisplay(false);
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -112,8 +148,47 @@ export default function Album() {
         </Toolbar>
       </AppBar>
       <main>
+        <Snackbar
+          open={snackbarOpened}
+          autoHideDuration={6000}
+          onClose={handleClose}
+        >
+          <Alert onClose={handleClose} severity="success">
+            You got the correct answer!
+          </Alert>
+        </Snackbar>
+
+        <Snackbar
+          open={failedMessageDisplay}
+          autoHideDuration={6000}
+          onClose={onFailedSnackbarClose}
+        >
+          <Alert onClose={onFailedSnackbarClose} severity="error">
+            You got the wrong answer!
+          </Alert>
+        </Snackbar>
+
         {/* Hero unit */}
         <div className={classes.heroContent}>
+          <Container>
+            <form onSubmit={onFormSubmit}>
+              <TextField
+                id="outlined-basic"
+                label="Answer for challenge"
+                variant="outlined"
+                value={answer}
+                onChange={answerChanged}
+              />
+              <Button
+                type="submit"
+                value="Submit"
+                variant="contained"
+                color="primary"
+              >
+                Submit
+              </Button>
+            </form>
+          </Container>
           <Container maxWidth="sm">
             {/*<Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>*/}
             {/*    Album layout*/}
@@ -123,7 +198,7 @@ export default function Album() {
             {/*    Make it short and sweet, but not too short so folks don&apos;t simply skip over it*/}
             {/*    entirely.*/}
             {/*</Typography>*/}
-            <Typography variant="p">
+            <Typography variant="body1">
               Because Lightning Network counted a central ledger, Dash mining
               many fundamental analysis! Golem looked at the automated over the
               counter after a oracle, so VeChain data mining the algorithm of
@@ -137,6 +212,7 @@ export default function Album() {
               of many airdrop, Waves built many digital identity behind lots of
               ERC20 token standard.
             </Typography>
+
             {/*<div className={classes.heroButtons}>*/}
             {/*    <Grid container spacing={2} justify="center">*/}
             {/*        <Grid item>*/}
