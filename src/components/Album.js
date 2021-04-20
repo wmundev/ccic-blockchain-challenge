@@ -77,6 +77,10 @@ export default function Album() {
     console.log("Hint: https://futureboy.us/stegano/decinput.html");
     console.log("Hint: https://en.wikipedia.org/wiki/Steganography");
 
+    fetchImages().then((allImages) => {
+      setImages(allImages);
+    });
+
     setInterval(() => {
       fetchImages().then((allImages) => {
         setImages(allImages);
