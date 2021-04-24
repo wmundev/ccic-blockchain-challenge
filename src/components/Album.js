@@ -1,35 +1,23 @@
 import React, { useEffect, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
-import axios from "axios";
-import cryptoImg from "../images/crytocurrency-bitcoin-reduced-steg.jpg";
-import { getRandomIntInclusive } from "../services/Number";
-import { Snackbar, TextField } from "@material-ui/core";
+import blockImage1 from "../images/blockchain-image-1steg.jpg";
+import blockImage2 from "../images/blockchain-image-2steg.jpg";
+import blockImage3 from "../images/blockchain-image-3steg.jpg";
+import blockImage4 from "../images/blockchain-image-4steg.jpg";
+import blockImage5 from "../images/blockchain-image-5steg.jpg";
+import blockImage6 from "../images/blockchain-image-6steg.jpg";
+import blockImage7 from "../images/blockchain-image-7steg.jpg";
+import blockImage8 from "../images/blockchain-image-8steg.jpg";
+import blockImage9 from "../images/blockchain-image-9steg.jpg";
+import { Backdrop, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -61,52 +49,117 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff",
+  },
 }));
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Album() {
   const classes = useStyles();
 
-  const [images, setImages] = useState(null);
   const [answer, setAnswer] = useState("");
   const [snackbarOpened, setSnackbarOpened] = useState(false);
   const [failedMessageDisplay, setFailedMessageDisplay] = useState(false);
+  const [backdropOpened, setBackdropOpened] = useState(false);
+  const [images, setImages] = useState([
+    {
+      image: blockImage1,
+      id: "1",
+    },
+    {
+      image: blockImage2,
+      id: "2",
+    },
+    {
+      image: blockImage3,
+      id: "3",
+    },
+    {
+      image: blockImage4,
+      id: "4",
+    },
+    { image: blockImage5, id: "5" },
+    { image: blockImage6, id: "6" },
+    {
+      image: blockImage7,
+      id: "7",
+    },
+    {
+      image: blockImage8,
+      id: "8",
+    },
+    {
+      image: blockImage9,
+      id: "9",
+    },
+  ]);
 
   useEffect(() => {
-    console.log("Hint: https://futureboy.us/stegano/decinput.html");
-    console.log("Hint: https://en.wikipedia.org/wiki/Steganography");
+    setSnackbarOpened(false);
+    setFailedMessageDisplay(false);
 
-    fetchImages().then((allImages) => {
-      setImages(allImages);
-    });
-
-    setInterval(() => {
-      fetchImages().then((allImages) => {
-        setImages(allImages);
-      });
-    }, 15000);
-
-    async function fetchImages() {
-      const randomIndexForCryptoImg = getRandomIntInclusive(
-        0,
-        cards.length - 1
-      );
-
-      const allImages = await Promise.all(
-        cards.map(async (card, index) => {
-          if (index === randomIndexForCryptoImg) {
-            return cryptoImg;
-          }
-          const response = await axios.get(
-            `https://source.unsplash.com/random/200x200?sig=${index}`
-          );
-          return response.request.responseURL;
-        })
-      );
-      return allImages;
+    if (
+      images[0].id === "1" &&
+      images[1].id === "3" &&
+      images[2].id === "7" &&
+      images[3].id === "5" &&
+      images[4].id === "9" &&
+      images[5].id === "4" &&
+      images[6].id === "6" &&
+      images[7].id === "2" &&
+      images[8].id === "8"
+    ) {
+      setSnackbarOpened(true);
+      openBackDrop();
+    } else {
+      setFailedMessageDisplay(true);
     }
+  }, [images]);
+
+  useEffect(() => {
+    // console.log("Hint: https://futureboy.us/stegano/decinput.html");
+    // console.log("Hint: https://en.wikipedia.org/wiki/Steganography");
+    console.log("steg steg steg");
+
+    // fetchImages().then((allImages) => {
+    //   setImages(allImages);
+    // });
+
+    // setInterval(() => {
+    // fetchImages().then((allImages) => {
+    //   setImages(allImages);
+    // });
+    // }, 15000);
+
+    //   async function fetchImages() {
+    //     const randomIndexForCryptoImg = getRandomIntInclusive(
+    //       0,
+    //       cards.length - 1
+    //     );
+    //
+    //     const allImages = await Promise.all(
+    //       cards.map(async (card, index) => {
+    //         if (index === randomIndexForCryptoImg) {
+    //           return cryptoImg;
+    //         }
+    //         const response = await axios.get(
+    //           `https://source.unsplash.com/random/200x200?sig=${index}`
+    //         );
+    //         return response.request.responseURL;
+    //       })
+    //     );
+    //     return allImages;
+    //   }
   }, []);
+
+  const openBackDrop = () => {
+    setBackdropOpened(true);
+  };
+
+  const closeBackDrop = () => {
+    setBackdropOpened(false);
+  };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -140,6 +193,51 @@ export default function Album() {
     setFailedMessageDisplay(false);
   };
 
+  // a little function to help us with reordering the result
+  const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  };
+
+  const onDragEnd = (result) => {
+    // dropped outside the list
+    if (!result.destination) {
+      return;
+    }
+
+    const items = reorder(
+      images,
+      result.source.index,
+      result.destination.index
+    );
+    debugger;
+    setImages(items);
+  };
+
+  const grid = 8;
+
+  const getListStyle = (isDraggingOver) => ({
+    background: isDraggingOver ? "lightblue" : "lightgrey",
+    padding: grid,
+    width: 250,
+  });
+
+  const getItemStyle = (isDragging, draggableStyle) => ({
+    // some basic styles to make the items look a bit nicer
+    userSelect: "none",
+    padding: grid * 2,
+    margin: `0 0 ${grid}px 0`,
+
+    // change background colour if dragging
+    background: isDragging ? "lightgreen" : "grey",
+
+    // styles we need to apply on draggables
+    ...draggableStyle,
+  });
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -152,6 +250,14 @@ export default function Album() {
         </Toolbar>
       </AppBar>
       <main>
+        <Backdrop
+          className={classes.backdrop}
+          open={backdropOpened}
+          onClick={closeBackDrop}
+        >
+          You won! Congratulations!
+        </Backdrop>
+
         <Snackbar
           open={snackbarOpened}
           autoHideDuration={6000}
@@ -175,23 +281,24 @@ export default function Album() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container>
-            <form onSubmit={onFormSubmit}>
-              <TextField
-                id="outlined-basic"
-                label="Answer for challenge"
-                variant="outlined"
-                value={answer}
-                onChange={answerChanged}
-              />
-              <Button
-                type="submit"
-                value="Submit"
-                variant="contained"
-                color="primary"
-              >
-                Submit
-              </Button>
-            </form>
+            {/*TODO commented out as we are using another type of challenge*/}
+            {/*<form onSubmit={onFormSubmit}>*/}
+            {/*  <TextField*/}
+            {/*    id="outlined-basic"*/}
+            {/*    label="Answer for challenge"*/}
+            {/*    variant="outlined"*/}
+            {/*    value={answer}*/}
+            {/*    onChange={answerChanged}*/}
+            {/*  />*/}
+            {/*  <Button*/}
+            {/*    type="submit"*/}
+            {/*    value="Submit"*/}
+            {/*    variant="contained"*/}
+            {/*    color="primary"*/}
+            {/*  >*/}
+            {/*    Submit*/}
+            {/*  </Button>*/}
+            {/*</form>*/}
           </Container>
           <Container maxWidth="sm">
             {/*<Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>*/}
@@ -235,35 +342,44 @@ export default function Album() {
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card, index) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={images ? images[index] : ""}
-                    title="Image title"
-                  />
-                  {/*<CardContent className={classes.cardContent}>*/}
-                  {/*    <Typography gutterBottom variant="h5" component="h2">*/}
-                  {/*        Heading*/}
-                  {/*    </Typography>*/}
-                  {/*    <Typography>*/}
-                  {/*        This is a media card. You can use this section to describe the content.*/}
-                  {/*    </Typography>*/}
-                  {/*</CardContent>*/}
-                  {/*<CardActions>*/}
-                  {/*    <Button size="small" color="primary">*/}
-                  {/*        View*/}
-                  {/*    </Button>*/}
-                  {/*    <Button size="small" color="primary">*/}
-                  {/*        Edit*/}
-                  {/*    </Button>*/}
-                  {/*</CardActions>*/}
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="droppable">
+              {(provided, snapshot) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  style={getListStyle(snapshot.isDraggingOver)}
+                >
+                  {images.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                          )}
+                        >
+                          <CardMedia
+                            className={classes.cardMedia}
+                            image={images[index].image}
+                            title="Image title"
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         </Container>
       </main>
       {/* Footer */}
