@@ -15,7 +15,7 @@ import blockImage6 from "../images/blockchain-image-6steg.jpg";
 import blockImage7 from "../images/blockchain-image-7steg.jpg";
 import blockImage8 from "../images/blockchain-image-8steg.jpg";
 import blockImage9 from "../images/blockchain-image-9steg.jpg";
-import { Backdrop, Snackbar } from "@material-ui/core";
+import { Backdrop, Grid, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
@@ -213,7 +213,7 @@ export default function Album() {
       result.source.index,
       result.destination.index
     );
-    debugger;
+
     setImages(items);
   };
 
@@ -223,6 +223,7 @@ export default function Album() {
     background: isDraggingOver ? "lightblue" : "lightgrey",
     padding: grid,
     width: 250,
+    margin: "0 auto",
   });
 
   const getItemStyle = (isDragging, draggableStyle) => ({
@@ -341,45 +342,46 @@ export default function Album() {
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="droppable">
-              {(provided, snapshot) => (
-                <div
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                  style={getListStyle(snapshot.isDraggingOver)}
-                >
-                  {images.map((item, index) => (
-                    <Draggable
-                      key={item.id}
-                      draggableId={item.id}
-                      index={index}
-                    >
-                      {(provided, snapshot) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          style={getItemStyle(
-                            snapshot.isDragging,
-                            provided.draggableProps.style
-                          )}
-                        >
-                          <CardMedia
-                            className={classes.cardMedia}
-                            image={images[index].image}
-                            title="Image title"
-                          />
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </DragDropContext>
+          <Grid justify="center">
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Droppable droppableId="droppable">
+                {(provided, snapshot) => (
+                  <div
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    style={getListStyle(snapshot.isDraggingOver)}
+                  >
+                    {images.map((item, index) => (
+                      <Draggable
+                        key={item.id}
+                        draggableId={item.id}
+                        index={index}
+                      >
+                        {(provided, snapshot) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            style={getItemStyle(
+                              snapshot.isDragging,
+                              provided.draggableProps.style
+                            )}
+                          >
+                            <CardMedia
+                              className={classes.cardMedia}
+                              image={images[index].image}
+                              title="Image title"
+                            />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
+          </Grid>
         </Container>
       </main>
       {/* Footer */}
