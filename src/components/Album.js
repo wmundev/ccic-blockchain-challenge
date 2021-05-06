@@ -3,7 +3,6 @@ import AppBar from "@material-ui/core/AppBar";
 import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import blockImage1 from "../images/blockchain-image-1steg.jpg";
@@ -18,6 +17,10 @@ import blockImage9 from "../images/blockchain-image-9steg.jpg";
 import { Backdrop, Grid, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import Chart from "./Chart";
+import ProductCategories from "./onepirate/modules/views/ProductCategories";
+import Link from "@material-ui/core/Link";
+import Typography from "./onepirate/modules/components/Typography";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -25,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -256,7 +258,7 @@ export default function Album() {
           open={backdropOpened}
           onClick={closeBackDrop}
         >
-          You won! Congratulations!
+          You won! Congratulations! {"FLAG{250:champic}"}
         </Backdrop>
 
         <Snackbar
@@ -281,6 +283,8 @@ export default function Album() {
 
         {/* Hero unit */}
         <div className={classes.heroContent}>
+          <ProductCategories />
+
           <Container>
             {/*TODO commented out as we are using another type of challenge*/}
             {/*<form onSubmit={onFormSubmit}>*/}
@@ -310,6 +314,10 @@ export default function Album() {
             {/*    Make it short and sweet, but not too short so folks don&apos;t simply skip over it*/}
             {/*    entirely.*/}
             {/*</Typography>*/}
+            <Typography variant="h4" marked="center" align="center" component="h2">
+              Ryan Lynch Biography
+            </Typography>
+            <br/>
             <Typography variant="body1">
               Because Lightning Network counted a central ledger, Dash mining
               many fundamental analysis! Golem looked at the automated over the
@@ -317,7 +325,8 @@ export default function Album() {
               many cryptocurrency since EOS stuck some unspent transaction
               output. Bitcoin launched a trusted ERC20 token standard after many
               consensus process although IOTA bought lots of algo-traded escrow,
-              or ERC20 token standard identified many algorithm! Ravencoin based
+              or ERC20 token standard identified many algorithm!
+              Ryan the drag and drop champion. Ravencoin based
               on lots of trusted stablecoin, and Ripple generates a peer-to-peer
               FUD for some do your own research because Augur accompanied by
               some address. Augur broadcast many whale! Because Stellar is wary
@@ -341,8 +350,12 @@ export default function Album() {
             {/*</div>*/}
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          <Grid justify="center">
+        <Container justify="center" className={classes.cardGrid} maxWidth="md">
+          <Grid >
+            <Typography variant="h4" marked="center" align="center" component="h2">
+              Ryan Lynch Challenge
+            </Typography>
+            <br/>
             <DragDropContext onDragEnd={onDragEnd}>
               <Droppable droppableId="droppable">
                 {(provided, snapshot) => (
@@ -384,16 +397,11 @@ export default function Album() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      {/*<footer className={classes.footer}>*/}
-      {/*    <Typography variant="h6" align="center" gutterBottom>*/}
-      {/*        Footer*/}
-      {/*    </Typography>*/}
-      {/*    <Typography variant="subtitle1" align="center" color="textSecondary" component="p">*/}
-      {/*        Something here to give the footer a purpose!*/}
-      {/*    </Typography>*/}
-      {/*    <Copyright />*/}
-      {/*</footer>*/}
+      <footer className={classes.footer}>
+          <Typography variant="subtitle1" align="center" component="p">
+            Brought to you by <Link href="https://en.bitcoin.it/wiki/Genesis_block">Genesis Block</Link>
+          </Typography>
+      </footer>
       {/* End footer */}
     </React.Fragment>
   );
