@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import AppBar from "@material-ui/core/AppBar";
 import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import blockImage1 from "../images/blockchain-image-1steg.jpg";
 import blockImage2 from "../images/blockchain-image-2steg.jpg";
@@ -14,10 +14,9 @@ import blockImage6 from "../images/blockchain-image-6steg.jpg";
 import blockImage7 from "../images/blockchain-image-7steg.jpg";
 import blockImage8 from "../images/blockchain-image-8steg.jpg";
 import blockImage9 from "../images/blockchain-image-9steg.jpg";
-import { Backdrop, Grid, Snackbar } from "@material-ui/core";
+import {Backdrop, Grid, Snackbar} from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import Chart from "./Chart";
+import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 import ProductCategories from "./onepirate/modules/views/ProductCategories";
 import Link from "@material-ui/core/Link";
 import Typography from "./onepirate/modules/components/Typography";
@@ -60,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Album() {
   const classes = useStyles();
 
-  const [answer, setAnswer] = useState("");
   const [snackbarOpened, setSnackbarOpened] = useState(false);
   const [failedMessageDisplay, setFailedMessageDisplay] = useState(false);
   const [backdropOpened, setBackdropOpened] = useState(false);
@@ -120,39 +118,7 @@ export default function Album() {
   }, [images]);
 
   useEffect(() => {
-    // console.log("Hint: https://futureboy.us/stegano/decinput.html");
-    // console.log("Hint: https://en.wikipedia.org/wiki/Steganography");
-    console.log("steg steg steg");
 
-    // fetchImages().then((allImages) => {
-    //   setImages(allImages);
-    // });
-
-    // setInterval(() => {
-    // fetchImages().then((allImages) => {
-    //   setImages(allImages);
-    // });
-    // }, 15000);
-
-    //   async function fetchImages() {
-    //     const randomIndexForCryptoImg = getRandomIntInclusive(
-    //       0,
-    //       cards.length - 1
-    //     );
-    //
-    //     const allImages = await Promise.all(
-    //       cards.map(async (card, index) => {
-    //         if (index === randomIndexForCryptoImg) {
-    //           return cryptoImg;
-    //         }
-    //         const response = await axios.get(
-    //           `https://source.unsplash.com/random/200x200?sig=${index}`
-    //         );
-    //         return response.request.responseURL;
-    //       })
-    //     );
-    //     return allImages;
-    //   }
   }, []);
 
   const openBackDrop = () => {
@@ -161,22 +127,6 @@ export default function Album() {
 
   const closeBackDrop = () => {
     setBackdropOpened(false);
-  };
-
-  const onFormSubmit = (event) => {
-    event.preventDefault();
-
-    const ANSWER = "38iW1h8gCihwEtKrWUcGzV8RaCNFHsWFrJ";
-
-    if (answer === ANSWER) {
-      setSnackbarOpened(true);
-    } else {
-      setFailedMessageDisplay(true);
-    }
-  };
-
-  const answerChanged = (event) => {
-    setAnswer(event.target.value);
   };
 
   const handleClose = (event, reason) => {
@@ -281,39 +231,10 @@ export default function Album() {
           </Alert>
         </Snackbar>
 
-        {/* Hero unit */}
         <div className={classes.heroContent}>
           <ProductCategories />
 
-          <Container>
-            {/*TODO commented out as we are using another type of challenge*/}
-            {/*<form onSubmit={onFormSubmit}>*/}
-            {/*  <TextField*/}
-            {/*    id="outlined-basic"*/}
-            {/*    label="Answer for challenge"*/}
-            {/*    variant="outlined"*/}
-            {/*    value={answer}*/}
-            {/*    onChange={answerChanged}*/}
-            {/*  />*/}
-            {/*  <Button*/}
-            {/*    type="submit"*/}
-            {/*    value="Submit"*/}
-            {/*    variant="contained"*/}
-            {/*    color="primary"*/}
-            {/*  >*/}
-            {/*    Submit*/}
-            {/*  </Button>*/}
-            {/*</form>*/}
-          </Container>
           <Container maxWidth="sm">
-            {/*<Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>*/}
-            {/*    Album layout*/}
-            {/*</Typography>*/}
-            {/*<Typography variant="h5" align="center" color="textSecondary" paragraph>*/}
-            {/*    Something short and leading about the collection below—its contents, the creator, etc.*/}
-            {/*    Make it short and sweet, but not too short so folks don&apos;t simply skip over it*/}
-            {/*    entirely.*/}
-            {/*</Typography>*/}
             <Typography variant="h4" marked="center" align="center" component="h2">
               Ryan Lynch Biography
             </Typography>
@@ -333,21 +254,6 @@ export default function Album() {
               of many airdrop, Waves built many digital identity behind lots of
               ERC20 token standard.
             </Typography>
-
-            {/*<div className={classes.heroButtons}>*/}
-            {/*    <Grid container spacing={2} justify="center">*/}
-            {/*        <Grid item>*/}
-            {/*            <Button variant="contained" color="primary">*/}
-            {/*                Main call to action*/}
-            {/*            </Button>*/}
-            {/*        </Grid>*/}
-            {/*        <Grid item>*/}
-            {/*            <Button variant="outlined" color="primary">*/}
-            {/*                Secondary action*/}
-            {/*            </Button>*/}
-            {/*        </Grid>*/}
-            {/*    </Grid>*/}
-            {/*</div>*/}
           </Container>
         </div>
         <Container justify="center" className={classes.cardGrid} maxWidth="md">
@@ -402,7 +308,6 @@ export default function Album() {
             Brought to you by <Link href="https://en.bitcoin.it/wiki/Genesis_block">Genesis Block</Link>
           </Typography>
       </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }
