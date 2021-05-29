@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import blockImage1 from "../images/blockchain-image-1steg.jpg";
 import blockImage2 from "../images/blockchain-image-2steg.jpg";
@@ -14,12 +14,13 @@ import blockImage6 from "../images/blockchain-image-6steg.jpg";
 import blockImage7 from "../images/blockchain-image-7steg.jpg";
 import blockImage8 from "../images/blockchain-image-8steg.jpg";
 import blockImage9 from "../images/blockchain-image-9steg.jpg";
-import {Backdrop, Grid, Snackbar} from "@material-ui/core";
+import { Backdrop, Card, CardContent, Grid, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import ProductCategories from "./onepirate/modules/views/ProductCategories";
 import Link from "@material-ui/core/Link";
 import Typography from "./onepirate/modules/components/Typography";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -45,10 +46,11 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     flexGrow: 1,
+    textAlign: "left",
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
+    padding: theme.spacing(1),
   },
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
@@ -116,10 +118,6 @@ export default function Album() {
       setFailedMessageDisplay(true);
     }
   }, [images]);
-
-  useEffect(() => {
-
-  }, []);
 
   const openBackDrop = () => {
     setBackdropOpened(true);
@@ -198,7 +196,7 @@ export default function Album() {
         <Toolbar>
           {/*<CameraIcon className={classes.icon} />*/}
           <Typography variant="h6" color="inherit" noWrap>
-            Ryan Lynch Apartment (Blockchain Challenge)
+            Ryan Lynch's Website (Blockchain Challenge)
           </Typography>
         </Toolbar>
       </AppBar>
@@ -235,33 +233,86 @@ export default function Album() {
           <ProductCategories />
 
           <Container maxWidth="sm">
-            <Typography variant="h4" marked="center" align="center" component="h2">
-              Ryan Lynch Biography
+            <Typography
+              variant="h4"
+              marked="center"
+              align="center"
+              component="h2"
+            >
+              About Ryan Lynch
             </Typography>
-            <br/>
+            <br />
             <Typography variant="body1">
-              Because Lightning Network counted a central ledger, Dash mining
-              many fundamental analysis! Golem looked at the automated over the
-              counter after a oracle, so VeChain data mining the algorithm of
-              many cryptocurrency since EOS stuck some unspent transaction
-              output. Bitcoin launched a trusted ERC20 token standard after many
-              consensus process although IOTA bought lots of algo-traded escrow,
-              or ERC20 token standard identified many algorithm!
-              Ryan the drag and drop champion. Ravencoin based
-              on lots of trusted stablecoin, and Ripple generates a peer-to-peer
-              FUD for some do your own research because Augur accompanied by
-              some address. Augur broadcast many whale! Because Stellar is wary
-              of many airdrop, Waves built many digital identity behind lots of
-              ERC20 token standard.
+              <Card variant="outlined">
+                <CardContent className={classes.cardContent}>
+                  <Typography variant="body2" component="p" gutterBottom>
+                    Because Lightning Network counted a central ledger, Dash
+                    mining many fundamental analysis! Golem looked at the
+                    automated over the counter after a oracle, so VeChain data
+                    mining the algorithm of many cryptocurrency since EOS stuck
+                    some unspent transaction output. Bitcoin launched a trusted
+                    ERC20 token standard after many consensus process although
+                    IOTA bought lots of algo-traded escrow, or ERC20 token
+                    standard identified many algorithm! Ryan loves Bruce Lee!
+                    Ravencoin based on lots of trusted stablecoin, and Ripple
+                    generates a peer-to-peer FUD for some do your own research
+                    because Augur accompanied by some address. Augur broadcast
+                    many whale! Because Stellar is wary of many airdrop, Waves
+                    built many digital identity behind lots of ERC20 token
+                    standard.
+                  </Typography>
+                </CardContent>
+              </Card>
             </Typography>
           </Container>
         </div>
         <Container justify="center" className={classes.cardGrid} maxWidth="md">
-          <Grid >
-            <Typography variant="h4" marked="center" align="center" component="h2">
-              Ryan Lynch Challenge
+          <Grid>
+            <Typography
+              variant="h4"
+              marked="center"
+              align="center"
+              component="h2"
+            >
+              Blockchain Challenge
             </Typography>
-            <br/>
+            <br />
+            <Card variant="outlined">
+              <CardContent className={classes.cardContent}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Instructions <MenuBookIcon />
+                </Typography>
+                <Typography variant="body1" gutterBottom component="p">
+                  In order to be successful in this challenge, be sure to use
+                  the{" "}
+                  <Link
+                    href="https://www.mozilla.org/en-US/firefox/new"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Firefox
+                  </Link>{" "}
+                  browser to download each picture below. You can do this by
+                  right clicking an image, opening the image in a new tab, and
+                  use CTRL + S (or CMD + S on Mac) to save the image in your
+                  computer.
+                </Typography>
+                <Typography variant="body1" gutterBottom component="p">
+                  Once you download each image, use this{" "}
+                  <Link
+                    href="https://futureboy.us/stegano/decinput.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    steganography tool
+                  </Link>{" "}
+                  to decode each image and find the correct order of nodes. Then
+                  drag and drop the images below into the correct order to
+                  complete the challenge!
+                </Typography>
+              </CardContent>
+            </Card>
+            <br />
             <DragDropContext onDragEnd={onDragEnd}>
               <Droppable droppableId="droppable">
                 {(provided, snapshot) => (
@@ -304,9 +355,16 @@ export default function Album() {
         </Container>
       </main>
       <footer className={classes.footer}>
-          <Typography variant="subtitle1" align="center" component="p">
-            Brought to you by <Link href="https://en.bitcoin.it/wiki/Genesis_block">Genesis Block</Link>
-          </Typography>
+        <Typography variant="subtitle1" align="center" component="p">
+          Brought to you by{" "}
+          <Link
+            href="https://en.bitcoin.it/wiki/Genesis_block"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Genesis Block
+          </Link>
+        </Typography>
       </footer>
     </React.Fragment>
   );
