@@ -60,3 +60,10 @@ Prerequisites: You should have already run the build command `npm run build` and
 13.	Now when you click on properties and then static website hosting the bucket website endpoint will be displayed. Eg. http://ccic-blockchain.s3-website-us-east-1.amazonaws.com
 
 For full instructions relating to the official static website hosting for AWS S3, refer to this link (https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html)
+
+# Running unit test
+1. Navigate to the root folder.
+2. Open a terminal application, if you are on windows for example, open up PowerShell.
+3. Run the command `npm run test:all`
+
+All unit tests should now run and output the results
