@@ -365,6 +365,29 @@ export default function Album() {
             Genesis Block
           </Link>
         </Typography>
+        <Typography variant="subtitle2" align="center" component="p">
+          Created by{" "}
+          <Link
+            href="https://www.rmit.edu.au"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            RMIT
+          </Link>{" "}
+          in partnership with  <Link
+            href="https://cci.calpoly.edu"
+            target="_blank"
+            rel="noopener noreferrer"
+        >Calpoly</Link>. RMIT Team:{" "}
+          <Link
+            href="https://rebrand.ly/wilsonmun"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Wilson Mun
+          </Link>
+          , Rohini Mohana Rangan, Qi Wen, Ka Lun Kevin Cheung
+        </Typography>
       </footer>
     </React.Fragment>
   );
