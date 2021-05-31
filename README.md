@@ -1,3 +1,15 @@
+# Github URL of project
+## Individual Github Repository
+https://github.com/wmundev/ccic-blockchain-challenge
+
+## Group Github Repository
+https://github.com/wmundev/calpoly-rmit-ccic-capstone
+
+# URL of deployed project
+https://blockchain.cacyber.net
+
+Credentials not needed
+
 # Project setup instructions
 To get started, the technologies needed to be installed are NodeJS and git
 
@@ -67,3 +79,119 @@ For full instructions relating to the official static website hosting for AWS S3
 3. Run the command `npm run test:all`
 
 All unit tests should now run and output the results
+
+# Release notes
+## [1.0.10] - 2021-05-30
+### New features
+- UI
+- content changes
+- add credits
+
+## [1.0.9] - 2021-05-27
+### New features
+- N/A
+
+## [1.0.8] - 2021-05-26
+### New features
+- N/A
+
+## [1.0.7] - 2021-05-23
+### New features
+- Is a drag and drop challenge now
+- Include many different types of hints to help the player
+- Implement the storyline in the application
+- Included elements of blockchain knowledge required to complete the challenge
+- Add in README instructions for starting application, and deploying application to S3
+
+## [1.0.6] - 2021-05-09
+### New features
+- Offline caching
+
+## [1.0.5] - 2021-05-08
+### New features
+- Icon update and title update
+
+## [1.0.4] - 2021-05-06
+### New features
+- Add in more hints for the challenge and add in more elements and beautify UI
+
+## [1.0.3] - 2021-04-28
+### New features
+- UI change - center div
+
+## [1.0.2] - 2021-04-24
+### New features
+- Blockchain challenge now changed to a drag and drop challenge instead of inputting an answer
+
+
+## [1.0.1] - 2021-04-21
+### New features
+- Added feature to submit form
+- Fix images not loading bug
+
+## [1.0.0] - 2021-04-19
+### New features
+- Added new blockchain challenge
+- Add images flashing every 15 seconds
+
+
+# Changelog
+
+## [1.0.10] - 2021-05-30
+### Changed
+- add test documentation
+- make content changes requested by the CalPoly team
+- Change text
+- Update UI Styling
+- add credits for rmit and calpoly team
+
+## [1.0.9] - 2021-05-27
+### Changed
+- fix unit tests
+
+## [1.0.8] - 2021-05-26
+### Changed
+- Update Github Actions for unit testing
+
+## [1.0.7] - 2021-05-23
+### Changed
+- Complete refactor of blockchain challenge
+- Is a drag and drop challenge now
+- Include many different types of hints to help the player
+- Implement the storyline in the application
+- Included elements of blockchain knowledge required to complete the challenge
+- Add in README instructions for starting application, and deploying application to S3
+- remove dead code
+
+## [1.0.6] - 2021-05-09
+### Changed
+- Add pwa service worker for offline caching
+
+## [1.0.5] - 2021-05-08
+### Changed
+- Icon update and title update
+
+## [1.0.4] - 2021-05-06
+### Changed
+- Add in more hints for the challenge and add in more elements and beautify UI
+
+## [1.0.3] - 2021-04-28
+### Changed
+- Remove debugger and center div
+
+## [1.0.2] - 2021-04-24
+### Changed
+- Blockchain challenge now changed to a drag and drop challenge instead of inputting an answer
+
+
+## [1.0.1] - 2021-04-21
+### Added
+- Added feature to submit form
+
+### Fixed
+- Fix images not loading bug
+
+## [1.0.0] - 2021-04-19
+### Added
+- Added new blockchain challenge
+- Add images flashing every 15 seconds
