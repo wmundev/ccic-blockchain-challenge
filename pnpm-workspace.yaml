@@ -1,0 +1,3 @@
+# core-js-pure's postinstall only prints a funding message.
+allowBuilds:
+  core-js-pure: false
